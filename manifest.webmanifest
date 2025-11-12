@@ -1,7 +1,35 @@
 {
+  "name": "Finam Favicon Test",
+  "short_name": "Finam Fav",
+  "description": "Тест отображения набора фавиконок и PWA-манифеста Finam Base Favicon Test",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+
   "icons": [
-    { "src": "img/finam/icon-192.png", "type": "image/png", "sizes": "192x192" },
-    { "src": "img/finam/icon-mask.png", "type": "image/png", "sizes": "512x512", "purpose": "maskable" },
-    { "src": "img/finam/icon-512.png", "type": "image/png", "sizes": "512x512" }
+    {
+      "src": "img/finam/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "img/finam/icon-mask.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "img/finam/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "img/finam/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
+    }
   ]
 }
