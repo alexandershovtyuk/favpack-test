@@ -7,17 +7,46 @@
   <title>Finam Base Favicon Test</title>
   <base href="/favpack-test/">
 
-  <!-- Favicon + icons -->
   <link rel="icon" href="img/finam/favicon.ico">
   <link rel="icon" href="img/finam/icon.svg" type="image/svg+xml" sizes="any">
   <link rel="apple-touch-icon" href="img/finam/apple-touch-icon.png">
 
-  <!-- PWA manifest -->
   <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#ffffff">
 </head>
 
 <body>
   <h1>Finam base favicon test</h1>
   <p>Для всех страниц сайта, кроме Premium / Ultra / Exclusive</p>
+  
+  <script>
+    (async () => {
+      const icons = [
+        "img/finam/favicon.ico",
+        "img/finam/icon.svg",
+        "img/finam/icon-192.png",
+        "img/finam/icon-512.png",
+        "img/finam/icon-mask.png",
+        "img/finam/apple-touch-icon.png",
+        "manifest.webmanifest"
+      ];
+
+      const base = document.querySelector('base')?.href || location.href;
+      const results = await Promise.all(icons.map(async path => {
+        try {
+          const res = await fetch(new URL(path, base), { cache: "no-store" });
+          return { path, status: res.status, ok: res.ok };
+        } catch (e) {
+          return { path, status: "ERR", ok: false };
+        }
+      }));
+
+      console.group("🧩 Favicon & Manifest check");
+      results.forEach(r =>
+        console[r.ok ? "log" : "error"](`${r.ok ? "✅" : "❌"} ${r.path} → ${r.status}`)
+      );
+      console.groupEnd();
+    })();
+  </script>
 </body>
 </html>
